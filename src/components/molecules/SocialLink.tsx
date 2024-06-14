@@ -4,6 +4,7 @@ import { IconType } from 'react-icons';
 interface SocialLinkProps {
   href: string;
   icon: IconType;
+  name: string;
 }
 
 const SocialLink: React.FC<SocialLinkProps> = ({ href, icon: IconComponent }) => {

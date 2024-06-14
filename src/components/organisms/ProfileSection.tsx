@@ -15,10 +15,10 @@ const ProfileSection: React.FC = () => {
         avatarSrc={profileImage}
       />
       <div className="social-links">
-        <SocialLink href="https://x.com/cinebenchsuki" icon={FaTwitter} />
-        <SocialLink href="https://instagram.com/araaki12345" icon={FaInstagram} />
-        <SocialLink href="https://github.com/araaki12345" icon={FaGithub} />
-        <SocialLink href="https://www.youtube.com/channel/UCOyRlwoj0bVFwhTq6vLtAhg" icon={FaYoutube} />
+        <SocialLink href="https://x.com/cinebenchsuki" icon={FaTwitter} name="@cinebenchsuki"/>
+        <SocialLink href="https://instagram.com/araaki12345" icon={FaInstagram} name="araaki12345"/>
+        <SocialLink href="https://github.com/araaki12345" icon={FaGithub} name="araaki12345"/>
+        <SocialLink href="https://www.youtube.com/channel/UCOyRlwoj0bVFwhTq6vLtAhg" icon={FaYoutube} name="R.pairons"/>
       </div>
     </div>
   );
