@@ -1,8 +1,8 @@
 import React from 'react';
 import ProfileCard from '../molecules/ProfileCard';
 import SocialLink from '../molecules/SocialLink';
-import { FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
-import profileImage from '@/assets/Profile.jpg';
+import { FaTwitter, FaInstagram, FaGithub, FaYoutube } from 'react-icons/fa';
+import profileImage from '@/assets/background.jpg';
 
 const ProfileSection: React.FC = () => {
   return (
@@ -18,6 +18,7 @@ const ProfileSection: React.FC = () => {
         <SocialLink href="https://x.com/cinebenchsuki" icon={FaTwitter} />
         <SocialLink href="https://instagram.com/araaki12345" icon={FaInstagram} />
         <SocialLink href="https://github.com/araaki12345" icon={FaGithub} />
+        <SocialLink href="https://www.youtube.com/channel/UCOyRlwoj0bVFwhTq6vLtAhg" icon={FaYoutube} />
       </div>
     </div>
   );

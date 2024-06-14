@@ -64,6 +64,19 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  .background {
+    background-image: url('@/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
 @layer base {
@@ -72,6 +85,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gray-900 text-white;
   }
 }

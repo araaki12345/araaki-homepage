@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import MainTemplate from '../templates/MainTemplate';
-import mainPc from "@/assets/MainPC.jpg";
-import laptop from "@/assets/Laptop.jpg";
+import mainPc from "@/assets/MainPC1.jpg";
+import laptop from "@/assets/Laptop1.jpg";
 import server from "@/assets/Server.jpg";
 import fileServer from "@/assets/FileServer.jpg";
 import junkPcImage from "@/assets/junkpc.jpg";
