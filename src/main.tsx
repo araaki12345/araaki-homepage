@@ -10,7 +10,7 @@ const storedTheme = localStorage.getItem('theme');
 if (storedTheme) {
   document.documentElement.classList.add(storedTheme);
 } else {
-  document.documentElement.classList.add('light');
+  document.documentElement.classList.add('dark');
 }
 
 const container = document.getElementById('root');

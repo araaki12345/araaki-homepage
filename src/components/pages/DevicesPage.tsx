@@ -1,12 +1,17 @@
 import React from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import MainTemplate from '../templates/MainTemplate';
+import mainPc from "@/assets/MainPC.jpg";
+import laptop from "@/assets/Laptop.jpg";
+import server from "@/assets/Server.jpg";
+import fileServer from "@/assets/FileServer.jpg";
+import junkPcImage from "@/assets/junkpc.jpg";
 
 const devices = [
   {
     name: "メインPC(デスクトップ)",
     description: "メインで使ってるPC",
-    image: "path/to/macbook.jpg",
+    image: mainPc,
     specs: {
       processor: "AMD Ryzen9 7900X",
       memory: "32GB",
@@ -17,18 +22,18 @@ const devices = [
   {
     name: "Raytrek R5-AA6(ノートPC)",
     description: "大学などで使うPC",
-    image: "path/to/iphone.jpg",
+    image: laptop,
     specs: {
       processor: "Core i7-12700H",
       memory: "32GB",
-      storage: "1TB",
+      storage: "SSD 1TB",
       GPU: "RTX 3060 Laptop"
     }
   },
   {
     name: "サーバー(デスクトップ)",
     description: "SU-CRAFTのサーバーとして使っているPC",
-    image: "path/to/macbook.jpg",
+    image: server,
     specs: {
       processor: "Intel core i5 10400",
       memory: "32GB",
@@ -39,7 +44,7 @@ const devices = [
   {
     name: "家庭用サーバー(デスクトップ)",
     description: "家庭用ファイルサーバー兼マイクラサーバーのデータ保管用サーバー",
-    image: "path/to/macbook.jpg",
+    image: fileServer,
     specs: {
       processor: "Intel celeron G3900",
       memory: "32GB",
@@ -47,22 +52,34 @@ const devices = [
       GPU: "Palit RTX 4070 SUPER"
     }
   },
+  {
+    name: "ジャンクPC(デスクトップ?)",
+    description: "なんとなく組んで文鎮化しているPC、ケースはない",
+    image: junkPcImage,
+    specs: {
+      processor: "Intel Core2 Quad Q9650",
+      memory: "8GB",
+      storage: "SSD 500GB", 
+      GPU: "Unknown GTX 1050"
+    }
+  }
 ];
 
 const DevicesPage: React.FC = () => {
   return (
     <MainTemplate>
+    <h1 className="text-3xl font-bold">DEVICES</h1>
     <div className="space-y-8">
       {devices.map((device, index) => (
         <Card key={index} className="dark:bg-gray-800 dark:text-white">
           <CardHeader>
-            <h2>{device.name}</h2>
+            <h2><b>{device.name}</b></h2>
           </CardHeader>
           <CardContent>
-            <img src={device.image} alt={device.name} className="mb-4" />
-            <p>{device.description}</p>
+            <img src={device.image} alt={device.name} className="mb-4 device-imahe" />
+            <p><strong>説明:</strong>{device.description}</p>
             <ul className="list-disc pl-5">
-              <li><strong>プロセッサ:</strong> {device.specs.processor}</li>
+              <li><strong>CPU:</strong> {device.specs.processor}</li>
               <li><strong>メモリ:</strong> {device.specs.memory}</li>
               <li><strong>ストレージ:</strong> {device.specs.storage}</li>
               <li><strong>GPU:</strong> {device.specs.GPU}</li>

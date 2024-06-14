@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import DevicesPage from './components/pages/DevicesPage';
 import WorksPage from './components/pages/WorkPage';
+import SplashScreen from './components/molecules/SplashScreen';
 
 const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // スプラッシュスクリーンを3秒間表示
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <SplashScreen />;
+  }
   return (
     <Router>
       <div className="min-h-screen dark:bg-gray-900 dark:text-white">
