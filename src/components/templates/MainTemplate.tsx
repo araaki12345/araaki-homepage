@@ -21,7 +21,7 @@ const MainTemplate: React.FC<{ children: React.ReactNode }> = ({ children }) => 
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex space-x-6"
             >
-              {['HOME', 'DEVICES', 'WORKS'].map((item, index) => (
+              {['HOME', 'DEVICES', 'WORKS'].map((item) => (
                 <li key={item}>
                   <Link 
                     to={item === 'HOME' ? '/' : `/${item.toLowerCase()}`}
