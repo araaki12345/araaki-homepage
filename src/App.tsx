@@ -9,11 +9,21 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000); // スプラッシュスクリーンを3秒間表示
+    const minDisplayTime = 2000; // 最小表示時間（ミリ秒）
+    const startTime = Date.now();
 
-    return () => clearTimeout(timer);
+    const initializeApp = async () => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    };
+
+    initializeApp().then(() => {
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, remainingTime);
+    });
   }, []);
 
   if (loading) {
