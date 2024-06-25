@@ -10,7 +10,7 @@ const creations = [
 const WorksPage: React.FC = () => {
   return (
     <MainTemplate>
-    <h1 className="text-3xl font-bold">WORKS</h1>
+    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center break-words">WORKS</h1>
     <div className="space-y-8 font-bold">
       {creations.map((work, index) => (
         <Card key={index} className="dark:bg-gray-800 dark:text-white">
