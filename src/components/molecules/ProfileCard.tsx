@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 interface ProfileCardProps {
   name: string;
   title: string;
-  affiliation: string;
+  affliation: string;
   description: string;
   avatarSrc: string;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, title, affiliation, description, avatarSrc }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, title, affliation, description, avatarSrc }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
