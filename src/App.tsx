@@ -6,27 +6,17 @@ import WorksPage from './components/pages/WorkPage';
 import SplashScreen from './components/molecules/SplashScreen';
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const minDisplayTime = 2000; // 最小表示時間（ミリ秒）
-    const startTime = Date.now();
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
 
-    const initializeApp = async () => {
-      await new Promise(resolve => setTimeout(resolve, 500));
-    };
-
-    initializeApp().then(() => {
-      const elapsedTime = Date.now() - startTime;
-      const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, remainingTime);
-    });
+    return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
+  if (showSplash) {
     return <SplashScreen />;
   }
   return (
