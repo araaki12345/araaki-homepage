@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainTemplate from '../templates/MainTemplate';
 import mainPc from "@/assets/MainPC1.jpg";
 import laptop from "@/assets/Laptop1.jpg";
 import server from "@/assets/Server.jpg";
 import fileServer from "@/assets/FileServer.jpg";
 import junkPcImage from "@/assets/junkpc.jpg";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const devices = [
   {
@@ -65,32 +65,61 @@ const devices = [
   }
 ];
 
+const DeviceCard: React.FC<{ device: typeof devices[0] }> = ({ device }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      layout
+      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
+    >
+      <img src={device.image} alt={device.name} className="w-full h-48 object-cover" />
+      <div className="p-6">
+        <h2 className="text-xl font-bold mb-2">{device.name}</h2>
+        <p className="text-gray-400 mb-4">{device.description}</p>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center text-purple-400 hover:text-purple-300 transition duration-300"
+        >
+          <span>詳細</span>
+          <motion.span
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="ml-1 inline-block"
+          >
+            ▼
+          </motion.span>
+        </button>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4"
+            >
+              <ul className="text-sm text-gray-300 space-y-2">
+                <li><span className="font-semibold">CPU:</span> {device.specs.processor}</li>
+                <li><span className="font-semibold">メモリ:</span> {device.specs.memory}</li>
+                <li><span className="font-semibold">ストレージ:</span> {device.specs.storage}</li>
+                <li><span className="font-semibold">GPU:</span> {device.specs.GPU}</li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
+
 const DevicesPage: React.FC = () => {
   return (
     <MainTemplate>
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center break-words">MY DEVICES</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center">MY DEVICES</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {devices.map((device, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-              <img src={device.image} alt={device.name} className="w-full h-48 object-cover" />
-              <div className="p-6">
-                <h2 className="text-xl font-bold mb-2">{device.name}</h2>
-                <p className="text-gray-400 mb-4">{device.description}</p>
-                <ul className="text-sm text-gray-300">
-                  <li><span className="font-semibold">CPU:</span> {device.specs.processor}</li>
-                  <li><span className="font-semibold">メモリ:</span> {device.specs.memory}</li>
-                  <li><span className="font-semibold">ストレージ:</span> {device.specs.storage}</li>
-                  <li><span className="font-semibold">GPU:</span> {device.specs.GPU}</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
+          <DeviceCard key={index} device={device} />
         ))}
       </div>
     </MainTemplate>
