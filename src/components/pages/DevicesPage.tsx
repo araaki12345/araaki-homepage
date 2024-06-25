@@ -5,6 +5,7 @@ import laptop from "@/assets/Laptop1.jpg";
 import server from "@/assets/Server.jpg";
 import fileServer from "@/assets/FileServer.jpg";
 import junkPcImage from "@/assets/junkpc.jpg";
+import { motion } from 'framer-motion';
 
 const devices = [
   {
