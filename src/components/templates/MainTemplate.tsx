@@ -21,6 +21,7 @@ const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
                 <Link to="/devices">DEVICES</Link>
                 <Link to="/works">WORKS</Link>
               </nav>
+              </div>
           </header>
       <main className="pt-24 sm:pt-16 p-4 container mx-auto">
         {children}
