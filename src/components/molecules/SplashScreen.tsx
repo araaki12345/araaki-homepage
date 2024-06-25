@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import logoImage from '@/assets/DALL·E-2024-06-14-13.25.png'; // ロゴ画像をインポート
 
 const SplashScreen: React.FC = () => {
