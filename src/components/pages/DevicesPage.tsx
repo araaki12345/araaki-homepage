@@ -69,15 +69,15 @@ const DevicesPage: React.FC = () => {
   return (
     <MainTemplate>
     <h1 className="text-3xl font-bold">DEVICES</h1>
-    <div className="space-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {devices.map((device, index) => (
-        <Card key={index} className="dark:bg-gray-800 dark:text-white">
+        <Card key={index} className="dark:bg-gray-800 dark:text-white hover:shadow-xl transition-shadow duration-300">
           <CardHeader>
-            <h2><b>{device.name}</b></h2>
+           <h2 className="text-xl font-bold">{device.name}</h2>
           </CardHeader>
           <CardContent>
-            <img src={device.image} alt={device.name} className="mb-4 device-imahe" />
-            <p><strong>説明:</strong>{device.description}</p>
+          <img src={device.image} alt={device.name} className="w-full h-48 object-cover mb-4 rounded" />
+            <p className="mb-2"><strong>説明:</strong> {device.description}</p>
             <ul className="list-disc pl-5">
               <li><strong>CPU:</strong> {device.specs.processor}</li>
               <li><strong>メモリ:</strong> {device.specs.memory}</li>
