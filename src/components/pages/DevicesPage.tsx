@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import MainTemplate from '../templates/MainTemplate';
 import mainPc from "@/assets/MainPC1.jpg";
