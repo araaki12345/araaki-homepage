@@ -108,3 +108,12 @@
     @apply text-base mb-2;
   }
 }
+@media (max-width: 640px) {
+  .profile-section {
+    padding: 1rem;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
