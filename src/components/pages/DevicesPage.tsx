@@ -7,7 +7,6 @@ import server from "@/assets/Server.jpg";
 import fileServer from "@/assets/FileServer.jpg";
 import junkPcImage from "@/assets/junkpc.jpg";
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const devices = [
   {
@@ -84,12 +83,13 @@ const DeviceCard: React.FC<{ device: typeof devices[0] }> = ({ device }) => {
           className="flex items-center text-purple-400 hover:text-purple-300 transition duration-300"
         >
           <span>詳細</span>
-          <motion.div
+          <motion.span
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3 }}
+            className="ml-1 inline-block"
           >
-            <ChevronDownIcon className="w-5 h-5 ml-1" />
-          </motion.div>
+            ▼
+          </motion.span>
         </button>
         <AnimatePresence>
           {isOpen && (
