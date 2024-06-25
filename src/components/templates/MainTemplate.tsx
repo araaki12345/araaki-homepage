@@ -1,32 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import backgroundImage from '@/assets/bg.jpg';
+import { motion } from 'framer-motion';
 
-interface MainTemplateProps {
-  children: React.ReactNode;
-}
-
-const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
+const MainTemplate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="relative min-h-screen">
-      <div className="background" style={{ backgroundImage: `url(${backgroundImage})` }} />
-      <div className="relative z-10">
-        <header className="p-4 bg-gray-800 text-white fixed w-full top-0 shadow-md z-10">
-          <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <div className='text-2xl sm:text-3xl font-bold mb-2 sm:mb-0'>
-              <Link to="/">AKIRA MOROOKA</Link>
-            </div>
-            <nav className="space-x-2 sm:space-x-4">
-              <Link to="/" className="text-sm sm:text-base">HOME</Link>
-              <Link to="/devices" className="text-sm sm:text-base">DEVICES</Link>
-              <Link to="/works" className="text-sm sm:text-base">WORKS</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="pt-24 sm:pt-16 p-4 container mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100">
+      <header className="fixed w-full bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg z-50">
+        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link to="/" className="text-2xl font-bold tracking-wider">AKIRA MOROOKA</Link>
+          </motion.div>
+          <nav>
+            <motion.ul
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex space-x-6"
+            >
+              {['HOME', 'DEVICES', 'WORKS'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    to={item === 'HOME' ? '/' : `/${item.toLowerCase()}`}
+                    className="text-sm uppercase tracking-widest hover:text-purple-400 transition duration-300"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </motion.ul>
+          </nav>
+        </div>
+      </header>
+      <main className="pt-24 px-4">
+        <div className="container mx-auto">
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };

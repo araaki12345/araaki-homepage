@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import MainTemplate from '../templates/MainTemplate';
 import mainPc from "@/assets/MainPC1.jpg";
 import laptop from "@/assets/Laptop1.jpg";
 import server from "@/assets/Server.jpg";
 import fileServer from "@/assets/FileServer.jpg";
 import junkPcImage from "@/assets/junkpc.jpg";
+import { motion } from 'framer-motion';
 
 const devices = [
   {
@@ -68,26 +68,31 @@ const devices = [
 const DevicesPage: React.FC = () => {
   return (
     <MainTemplate>
-    <h1 className="text-2xl　text-3xl font-bold　mb-6">DEVICES</h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {devices.map((device, index) => (
-        <Card key={index} className="dark:bg-gray-800 dark:text-white">
-          <CardHeader>
-           <h2 className="text-xl font-bold">{device.name}</h2>
-          </CardHeader>
-          <CardContent>
-          <img src={device.image} alt={device.name} className="w-full h-48 object-cover mb-4 rounded" />
-            <p className="text-sm　mb-2"><strong>説明:</strong> {device.description}</p>
-            <ul className="list-disc pl-5　text-sm">
-              <li><strong>CPU:</strong> {device.specs.processor}</li>
-              <li><strong>メモリ:</strong> {device.specs.memory}</li>
-              <li><strong>ストレージ:</strong> {device.specs.storage}</li>
-              <li><strong>GPU:</strong> {device.specs.GPU}</li>
-            </ul>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+      <h1 className="text-4xl font-bold mb-12 text-center">MY DEVICES</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {devices.map((device, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+              <img src={device.image} alt={device.name} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h2 className="text-xl font-bold mb-2">{device.name}</h2>
+                <p className="text-gray-400 mb-4">{device.description}</p>
+                <ul className="text-sm text-gray-300">
+                  <li><span className="font-semibold">CPU:</span> {device.specs.processor}</li>
+                  <li><span className="font-semibold">メモリ:</span> {device.specs.memory}</li>
+                  <li><span className="font-semibold">ストレージ:</span> {device.specs.storage}</li>
+                  <li><span className="font-semibold">GPU:</span> {device.specs.GPU}</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </MainTemplate>
   );
 }
