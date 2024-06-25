@@ -24,7 +24,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, title, affliation, desc
       <div className="p-6">
         <h2 className="text-2xl font-bold mb-2">{name}</h2>
         <p className="text-purple-400 mb-4">{title}</p>
-        <p className="text-gray-400 mb-4">{affiliation}</p>
+        <p className="text-gray-400 mb-4">{affliation}</p>
         <p className="text-gray-300">{description}</p>
       </div>
     </motion.div>
