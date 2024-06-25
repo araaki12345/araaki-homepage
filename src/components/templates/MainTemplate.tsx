@@ -32,4 +32,3 @@ const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
 };
 
 export default MainTemplate;
-
