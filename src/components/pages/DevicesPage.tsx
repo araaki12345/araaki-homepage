@@ -49,7 +49,7 @@ const devices = [
       processor: "Intel celeron G3900",
       memory: "32GB",
       storage: "SSD 256GB + 1TB + 2TB, HDD 2TB", 
-      GPU: "Palit RTX 4070 SUPER"
+      GPU: "内臓GPU"
     }
   },
   {
